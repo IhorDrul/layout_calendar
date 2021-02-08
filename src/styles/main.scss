@@ -39,6 +39,8 @@ body {
   
     .calendar-#{$month-length-name} div:nth-child(#{$i}):hover {
       background-color: $bg-color-hover;
+      transform: translate(0 , -20px);
+      cursor: pointer;
     }
   }
 }
