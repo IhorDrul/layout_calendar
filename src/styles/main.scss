@@ -1,3 +1,44 @@
+@import "variables";
+@import "mixin";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $common-font-size;
+  font-family: $common-font-family;
+}
+
 body {
   margin: 0;
+}
+
+.calendar {
+  width: $size * 7 + $gap * 7;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@each $day-name, $day-number in $week-days {
+  .calendar-#{$day-name} div:first-child {
+    margin-left: ($size + $gap) * $day-number;
+  }
+}
+
+@each $month-length-name, $month-length in $months-length {
+  @for $i from 1 through $month-length {
+    .calendar-#{$month-length-name} div:nth-child(#{$i}) {
+      @include cell-style($size, $bg-color, $gap, $border-style);
+    }
+  
+    .calendar-#{$month-length-name} div:nth-child(#{$i})::before {
+      content: "#{$i}";
+    }
+  
+    .calendar-#{$month-length-name} div:nth-child(#{$i}):hover {
+      background-color: $bg-color-hover;
+    }
+  }
 }
