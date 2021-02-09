@@ -23,13 +23,14 @@
 
 @each $month-length-name, $month-length in $months-length {
   @for $i from 1 through $month-length {
+    $useless-days: $month-length + 1;
     .calendar-#{$month-length-name} div:nth-child(#{$i}) {
       &::after {
         content: "#{$i}";
       }
     }
 
-    .calendar div:last-child {
+    .calendar-#{$month-length-name} div:nth-child(n + #{$useless-days}) {
       visibility: hidden;
     }
   }
