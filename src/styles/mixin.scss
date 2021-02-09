@@ -1,0 +1,11 @@
+@mixin cell-style($size, $bg-color, $gap, $border-style) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  background-color: $bg-color;
+  margin-right: $gap;
+  margin-top: $gap;
+  border: $border-style;
+}
