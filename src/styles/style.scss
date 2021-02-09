@@ -3,6 +3,16 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+
+  div {
+    @include cell-style($size, $bg-color, $gap, $border-style);
+
+    &:hover {
+      background-color: $bg-color-hover;
+      transform: translate(0 , -20px);
+      cursor: pointer;
+    }
+  }
 }
 
 @each $day-name, $day-number in $week-days {
@@ -14,17 +24,13 @@
 @each $month-length-name, $month-length in $months-length {
   @for $i from 1 through $month-length {
     .calendar-#{$month-length-name} div:nth-child(#{$i}) {
-      @include cell-style($size, $bg-color, $gap, $border-style);
-
-      &::before {
+      &::after {
         content: "#{$i}";
       }
+    }
 
-      &:hover {
-        background-color: $bg-color-hover;
-        transform: translate(0 , -20px);
-        cursor: pointer;
-      }
+    .calendar div:last-child {
+      visibility: hidden;
     }
   }
 }
