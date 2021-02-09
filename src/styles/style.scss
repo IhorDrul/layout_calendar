@@ -15,16 +15,16 @@
   @for $i from 1 through $month-length {
     .calendar-#{$month-length-name} div:nth-child(#{$i}) {
       @include cell-style($size, $bg-color, $gap, $border-style);
-    }
-  
-    .calendar-#{$month-length-name} div:nth-child(#{$i})::before {
-      content: "#{$i}";
-    }
-  
-    .calendar-#{$month-length-name} div:nth-child(#{$i}):hover {
-      background-color: $bg-color-hover;
-      transform: translate(0 , -20px);
-      cursor: pointer;
+
+      &::before {
+        content: "#{$i}";
+      }
+
+      &:hover {
+        background-color: $bg-color-hover;
+        transform: translate(0 , -20px);
+        cursor: pointer;
+      }
     }
   }
 }
